@@ -56,7 +56,9 @@ Because of the above, cloning this repo and running it cold on a different machi
 
 ## Demo
 
-*(video/GIF link goes here once recorded — see below)*
+![EyeControl demo](demo/demo.gif)
+
+Hands are kept visibly off the keyboard and mouse throughout — every action (zone selection, character entry) is driven entirely by gaze and blink.
 
 ## What's next
 
