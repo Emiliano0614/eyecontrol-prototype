@@ -46,6 +46,18 @@ This launches a tkinter window that walks through calibration targets, records g
 
 **Requirements:** see `requirements.txt`. Uses MediaPipe (Tasks API), OpenCV, tkinter, and numpy.
 
+## Known limitations
+
+- **Calibration is per-user.** The zone centroids in `solve_mapping.py` are built from *my* recorded gaze data — someone else's face geometry, camera angle, or lighting will not classify correctly without running their own calibration sweep first. This isn't a bug; gaze-to-screen mapping is inherently user-specific without a much larger, more diverse training set.
+- **Sensitive to lighting and camera position.** Accuracy was measured under a fairly consistent setup; moving the camera or working in low light will shift the underlying signal.
+- **2-zone horizontal classification only, 60% hit rate on held-out data.** This is an honest, measured number from real testing, not a target or estimate — see `solve_mapping.py` for the evaluation code. Vertical (up/down) classification and finer zone granularity are open problems, discussed in the code comments.
+
+Because of the above, cloning this repo and running it cold on a different machine/face likely won't reproduce the same accuracy — see the demo video below for a working end-to-end run.
+
+## Demo
+
+*(video/GIF link goes here once recorded — see below)*
+
 ## What's next
 
 This prototype's core logic — gaze math, zone classification, blink detection, drill-tree navigation — is being carried into [**EyeControl**](https://github.com/Emiliano0614/EyeControl), a full rewrite as a two-component system:
